@@ -1,3 +1,7 @@
+variable "omni_s3_bucket_name" {
+  description = "Name of a S3 bucket for Omni backups"
+}
+
 variable "oidc_s3_bucket_name" {
   description = "Name of a S3 bucket for the OIDC endpoint"
 }
