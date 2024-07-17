@@ -71,6 +71,7 @@ module "iam_role_mt_aws_glacier" {
   source = "./irsa/iam_role"
 
   name                 = "mt-aws-glacier"
+  namespace            = "home-assistant"
   service_account_name = "home-assistant"
   openid_provider_arn  = aws_iam_openid_connect_provider.irsa.arn
   issuer               = aws_s3_bucket.oidc.bucket_regional_domain_name
