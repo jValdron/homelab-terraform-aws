@@ -1,3 +1,6 @@
+# =========================================================
+# cert-manager
+# =========================================================
 module "iam_role_cert_manager" {
   source = "./irsa/iam_role"
 
@@ -30,6 +33,9 @@ data "aws_iam_policy_document" "cert_manager" {
   }
 }
 
+# =========================================================
+# external-dns
+# =========================================================
 module "iam_role_external_dns" {
   source = "./irsa/iam_role"
 
@@ -52,6 +58,28 @@ data "aws_iam_policy_document" "external_dns" {
       "route53:ListHostedZones",
       "route53:ListResourceRecordSets",
       "route53:ListTagsForResource",
+    ]
+
+    resources = ["*"]
+  }
+}
+
+# =========================================================
+# mt-aws-glacier
+# =========================================================
+module "iam_role_mt_aws_glacier" {
+  source = "./irsa/iam_role"
+
+  name                = "mt-aws-glacier"
+  openid_provider_arn = aws_iam_openid_connect_provider.irsa.arn
+  issuer              = aws_s3_bucket.oidc.bucket_regional_domain_name
+  inline_policy       = data.aws_iam_policy_document.mt_aws_glacier.json
+}
+
+data "aws_iam_policy_document" "mt_aws_glacier" {
+  statement {
+    actions = [
+      "glacier:*",
     ]
 
     resources = ["*"]
