@@ -25,7 +25,7 @@ data "aws_iam_policy_document" "assume_policy" {
       variable = "${var.issuer}:sub"
 
       values = [
-        "system:serviceaccount:${coalesce(var.namespace, var.name)}:${var.name}",
+        "system:serviceaccount:${coalesce(var.namespace, var.name)}:${coalesce(var.service_account_name, var.name)}",
       ]
     }
   }
