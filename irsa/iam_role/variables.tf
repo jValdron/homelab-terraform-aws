@@ -11,6 +11,11 @@ variable "namespace" {
   default = null
 }
 
+variable "service_accounts" {
+  type    = list(string)
+  default = null
+}
+
 variable "openid_provider_arn" {
   type = string
 }

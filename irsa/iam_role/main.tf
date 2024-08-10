@@ -24,9 +24,9 @@ data "aws_iam_policy_document" "assume_policy" {
       test     = "StringEquals"
       variable = "${var.issuer}:sub"
 
-      values = [
+      values = coalesce(var.service_accounts, [
         "system:serviceaccount:${coalesce(var.namespace, var.name)}:${coalesce(var.service_account_name, var.name)}",
-      ]
+      ])
     }
   }
 }
