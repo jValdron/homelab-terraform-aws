@@ -5,6 +5,8 @@ resource "aws_iam_role" "this" {
   assume_role_policy    = data.aws_iam_policy_document.assume_policy.json
   force_detach_policies = true
 
+  max_session_duration = 43200
+
   inline_policy {
     name   = var.name
     policy = var.inline_policy
