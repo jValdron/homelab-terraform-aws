@@ -23,6 +23,7 @@ data "aws_iam_policy_document" "cert_manager" {
     ]
 
     resources = [
+      aws_route53_zone.int_valdron_ca.arn,
       aws_route53_zone.valdron_ca.arn
     ]
   }
