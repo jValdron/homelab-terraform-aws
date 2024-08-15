@@ -80,9 +80,9 @@ module "iam_role_mt_aws_glacier" {
     "system:serviceaccount:home-assistant:esphome",
     "system:serviceaccount:home-assistant:home-assistant",
     "system:serviceaccount:mealie:mealie",
-    "system:serviceaccount:storage:mt-aws-glacier-backups",
-    "system:serviceaccount:storage:mt-aws-glacier-photos",
-    "system:serviceaccount:storage:mt-aws-glacier-profiles"
+    "system:serviceaccount:storage:mt-aws-glacier-storage0-backups",
+    "system:serviceaccount:storage:mt-aws-glacier-storage0-photos",
+    "system:serviceaccount:storage:mt-aws-glacier-storage0-profiles"
   ]
 }
 
